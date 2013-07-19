@@ -1,4 +1,6 @@
-tcp.createServer(8080, function (socket) {
+var tcp = require('./tcp.js');
+
+var server = tcp.createServer(8080, function (socket) {
   console.log("SERVER: New client connected");
   socket.sink(socket, function (err) {
     if (err) throw err;
@@ -12,7 +14,8 @@ var data = new Buffer("Hello World!\n");
 var each = require('simple-stream-helpers/each.js');
 var binarySource = require('simple-stream-helpers/binary-source.js');
 
-tcp.connect(8080, function (socket) {
+tcp.connect(8080, function (err, socket) {
+  if (err) throw err;
   each(socket, function (chunk) {
     console.log("CLIENT:", chunk);
   })(function (err) {
@@ -23,5 +26,6 @@ tcp.connect(8080, function (socket) {
   socket.sink(binarySource(data, 7))(function (err) {
     if (err) throw err;
     console.log("CLIENT: Server is done with data");
+    server.close();
   });
 });
