@@ -1,0 +1,23 @@
+{
+  "name": "simple-tcp",
+  "version": "0.0.1",
+  "description": "A simple-streams based interface for TCP",
+  "main": "tcp.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/creationix/simple-tcp.git"
+  },
+  "keywords": [
+    "simple-stream",
+    "js-git",
+    "tcp"
+  ],
+  "author": "Tim Caswell <tim@creationix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/creationix/simple-tcp/issues"
+  }
+}
