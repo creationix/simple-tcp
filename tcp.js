@@ -86,14 +86,9 @@ function streamToSource(stream) {
     check();
   });
 
-  stream.on('readable', function () {
-    var data = false;
-    var chunk;
-    while (chunk = stream.read()) {
-      data = true;
-      dataQueue.push([null, chunk]);
-    }
-    if (data) check();
+  stream.on('data', function (chunk) {
+    dataQueue.push([null, chunk]);
+    check();
   });
 
   function check() {
